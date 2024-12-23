@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    azure:
+      eventhubs:
+        connection-string: Endpoint=sb://just-test.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=key
+    function:
+      definition: consume;supply
+    stream:
+      bindings:
+        consume-in-0:
+          destination: demo
+          group: $Default
+        supply-out-0:
+          destination: demo
+      binders:
+        kafka:
+          environment:
+            spring:
+              main:
+                sources: com.azure.spring.cloud.autoconfigure.implementation.eventhubs.kafka.AzureEventHubsKafkaAutoConfiguration,com.example.sca.eventhubs.MyConfig
+debug: on
