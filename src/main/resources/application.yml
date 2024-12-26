@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    hikari:
+      maximum-pool-size: 1
+    url: jdbc:mysql://xxx.mysql.database.azure.com:3306/todo?serverTimezone=UTC&sslmode=required
+    username: aad_mysql_moary
+    azure:
+      passwordless-enabled: true
+      credential:
+        token-credential-bean-name: test
+
+logging.level.com.azure.spring: debug
+logging.level.org.example.sca: debug
+logging.level.com.azure.identity: TRACE
+logging.level.com.microsoft.aad: TRACE
+logging.level.com.azure.core.credential: TRACE
