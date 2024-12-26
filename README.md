@@ -43,7 +43,8 @@ jstack -l $pid > $log_file
 
 View the threads log and stack trace, you will see the execution of the threads.
 
-Hotfix:
+## Workaround
+
 - Review your code, not ran business login thread under the common pool.
 - Update your token credential bean with below definition, it will use a custom thread pool for token acquisition:
 
