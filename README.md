@@ -50,18 +50,18 @@ View the threads log and stack trace, you will see the execution of the threads.
 
   ```java
   @Primary
-      @Bean
-      TokenCredential test() {
-          ExecutorService executorService = Executors.newFixedThreadPool(10, new ThreadFactory() {
-              private int count = 0;
-              @Override
-              public Thread newThread(Runnable runnable) {
-                  return new Thread(runnable, "Custom*******" + count++);
-              }
-          });
-          return new DefaultAzureCredentialBuilder()
-              .managedIdentityClientId("<your-managed-identity-client-id>")
-              .executorService(executorService)
-              .build();
-      }
+  @Bean
+  TokenCredential test() {
+      ExecutorService executorService = Executors.newFixedThreadPool(10, new ThreadFactory() {
+          private int count = 0;
+          @Override
+          public Thread newThread(Runnable runnable) {
+              return new Thread(runnable, "Custom*******" + count++);
+          }
+      });
+      return new DefaultAzureCredentialBuilder()
+          .managedIdentityClientId("<your-managed-identity-client-id>")
+          .executorService(executorService)
+          .build();
+  }
   ```
